@@ -1,6 +1,8 @@
-﻿namespace UnityTools.GridCreation
+﻿using System.Collections;
+
+namespace UnityTools.GridCreation
 {
-    public class Grid<T> where T : GridTile
+    public class Grid<T> : IEnumerable where T : GridTile
     {
         public int Width{ get; private set; }
         public int Height{ get; private set; }
@@ -62,6 +64,11 @@
         public T this[int x, int y]{
             get => _gridArray[x, y];
             set => _gridArray[x, y] = (T)value;
+        }
+
+
+        public IEnumerator GetEnumerator(){
+            return _gridArray.GetEnumerator();
         }
     }
 }

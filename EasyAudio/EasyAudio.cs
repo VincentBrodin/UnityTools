@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace EasyAudio
+namespace UnityTools.EasyAudio
 {
     [CreateAssetMenu(fileName = "New Audio", menuName = "Easy Tools/Audio/New Audio", order = 0)]
     public class EasyAudio : ScriptableObject

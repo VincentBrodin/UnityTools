@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace EasyAudio
+namespace UnityTools.EasyAudio
 {
     public class EasyAudioManager : MonoBehaviour
     {
         public AudioSource audioSource;
         public static EasyAudioManager Singleton { get; private set; }
-        public Dictionary<string, EasyAudio> Audios{ get; private set; } = new();
+        public Dictionary<string, UnityTools.EasyAudio.EasyAudio> Audios{ get; private set; } = new();
         private const string ResourcePath = "Audios";
         
         private void Awake(){
@@ -20,22 +20,22 @@ namespace EasyAudio
             
             //Get all animations from resources
             
-            EasyAudio[] audios = Resources.LoadAll<EasyAudio>(ResourcePath);
-            foreach (EasyAudio eAudio in audios){
+            UnityTools.EasyAudio.EasyAudio[] audios = Resources.LoadAll<UnityTools.EasyAudio.EasyAudio>(ResourcePath);
+            foreach (UnityTools.EasyAudio.EasyAudio eAudio in audios){
                 Audios.Add(eAudio.audioName, eAudio);
             }
         }
 
-        public EasyAudio GetAudio(string audioName){
+        public UnityTools.EasyAudio.EasyAudio GetAudio(string audioName){
             return Audios[audioName];
         }
         
         public void PlayAudio(string audioName){
-            EasyAudio easyAudio = GetAudio(audioName);
+            UnityTools.EasyAudio.EasyAudio easyAudio = GetAudio(audioName);
             PlayAudio(easyAudio);
         }
         
-        public void PlayAudio(EasyAudio easyAudio){
+        public void PlayAudio(UnityTools.EasyAudio.EasyAudio easyAudio){
             audioSource.clip = easyAudio.audioClip;
             audioSource.volume = easyAudio.volume;
             audioSource.pitch = Random.Range(easyAudio.pitchRange.x, easyAudio.pitchRange.y);

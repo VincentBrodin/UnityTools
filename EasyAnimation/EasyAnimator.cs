@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-namespace EasyAnimation
+namespace UnityTools.EasyAnimation
 {
     public class EasyAnimator : MonoBehaviour
     {
-        public EasyAnimation easyAnimation;
+        public global::UnityTools.EasyAnimation.EasyAnimation easyAnimation;
         public bool playOnStart;
         public bool loop;
         public bool destroyOnEnd;

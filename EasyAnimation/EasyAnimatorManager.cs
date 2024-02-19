@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace EasyAnimation
+namespace UnityTools.EasyAnimation
 {
     public class EasyAnimatorManager : MonoBehaviour
     {
         public static EasyAnimatorManager Singleton { get; private set; }
-        public Dictionary<string, EasyAnimation> Animations{ get; private set; } = new();
+        public Dictionary<string, UnityTools.EasyAnimation.EasyAnimation> Animations{ get; private set; } = new();
         private const string ResourcePath = "Animations";
         
         private void Awake(){
@@ -19,13 +19,13 @@ namespace EasyAnimation
             
             //Get all animations from resources
             
-            EasyAnimation[] animations = Resources.LoadAll<EasyAnimation>(ResourcePath);
-            foreach (EasyAnimation anim in animations){
+            UnityTools.EasyAnimation.EasyAnimation[] animations = Resources.LoadAll<UnityTools.EasyAnimation.EasyAnimation>(ResourcePath);
+            foreach (UnityTools.EasyAnimation.EasyAnimation anim in animations){
                 Animations.Add(anim.animationName, anim);
             }
         }
 
-        public EasyAnimation GetAnimation(string animationName){
+        public UnityTools.EasyAnimation.EasyAnimation GetAnimation(string animationName){
             return Animations[animationName];
         }
     }
